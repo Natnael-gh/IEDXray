@@ -122,7 +122,9 @@ work_dirs/
 *.py~
 *.sh~
 
-
+*.ckpt
+*.zip
+*.tar
 
 #ignore folders
 work_dirs/
