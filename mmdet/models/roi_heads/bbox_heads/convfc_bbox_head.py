@@ -215,7 +215,12 @@ class ConvFCBBoxHead(BBoxHead):
         cls_score = self.fc_cls(x_cls) if self.with_cls else None
         bbox_pred = self.fc_reg(x_reg) if self.with_reg else None
         return cls_score, bbox_pred
-
+        
+        # return dict(
+        #     cls_score=cls_score,
+        #     bbox_pred=bbox_pred,
+        #     bbox_feats=x,   # this is your RoI feature tensor
+        # )
 
 @MODELS.register_module()
 class Shared2FCBBoxHead(ConvFCBBoxHead):

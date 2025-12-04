@@ -23,8 +23,10 @@ from .shared_heads import ResLayer
 from .sparse_roi_head import SparseRoIHead
 from .standard_roi_head import StandardRoIHead
 from .trident_roi_head import TridentRoIHead
+from .standard_roi_head_supcon import StandardRoIHeadSupCon
+from .contrastive_head import ContrastiveHead
 
-__all__ = [
+__all__ = ['ContrastiveHead','StandardRoIHeadSupCon',
     'BaseRoIHead', 'CascadeRoIHead', 'DoubleHeadRoIHead', 'MaskScoringRoIHead',
     'HybridTaskCascadeRoIHead', 'GridRoIHead', 'ResLayer', 'BBoxHead',
     'ConvFCBBoxHead', 'DIIHead', 'SABLHead', 'Shared2FCBBoxHead',
@@ -36,3 +38,8 @@ __all__ = [
     'SCNetRoIHead', 'SCNetMaskHead', 'SCNetSemanticHead', 'SCNetBBoxHead',
     'FeatureRelayHead', 'GlobalContextHead', 'MultiInstanceRoIHead'
 ]
+from .standard_roi_head_supcon import StandardRoIHeadSupCon
+from .contrastive_head import ContrastiveHead
+
+__all__.append('StandardRoIHeadSupCon')
+__all__.append('ContrastiveHead')

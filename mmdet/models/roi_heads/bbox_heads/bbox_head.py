@@ -112,7 +112,7 @@ class BBoxHead(BaseModule):
         return getattr(self.loss_cls, 'custom_cls_channels', False)
 
     # TODO: Create a SeasawBBoxHead to simplified logic in BBoxHead
-    @property
+    @property #property means we can access it like an attribute not a method
     def custom_activation(self) -> bool:
         """get custom_activation from loss_cls."""
         return getattr(self.loss_cls, 'custom_activation', False)
@@ -140,9 +140,9 @@ class BBoxHead(BaseModule):
                   scale levels, each is a 4D-tensor, the channels number
                   is num_base_priors * 4.
         """
-        if self.with_avg_pool:
-            if x.numel() > 0:
-                x = self.avg_pool(x)
+        if self.with_avg_pool: # expalanation: if we use avg pooling the input x is of shape (N, C, H, W) and we need to pool it to (N, C, 1, 1)
+            if x.numel() > 0: 
+                x = self.avg_pool(x) 
                 x = x.view(x.size(0), -1)
             else:
                 # avg_pool does not support empty tensor,
@@ -150,7 +150,7 @@ class BBoxHead(BaseModule):
                 x = torch.mean(x, dim=(-1, -2))
         cls_score = self.fc_cls(x) if self.with_cls else None
         bbox_pred = self.fc_reg(x) if self.with_reg else None
-        return cls_score, bbox_pred
+        return cls_score, bbox_pred, x
 
     def _get_targets_single(self, pos_priors: Tensor, neg_priors: Tensor,
                             pos_gt_bboxes: Tensor, pos_gt_labels: Tensor,

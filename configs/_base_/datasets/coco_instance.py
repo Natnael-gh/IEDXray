@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+data_root = r'C:\Users\Natnael\Desktop\Datasets\split_2_electronic_explosive_binary'
 
 # Example to use different file client
 # Method 1: simply set the data root and let the file I/O module
@@ -19,7 +19,8 @@ backend_args = None
 
 train_pipeline = [
     dict(type='LoadImageFromFile', backend_args=backend_args),
-    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    # dict(type='LoadAnnotations', with_bbox=True, with_mask=True)
+    dict(type='LoadAnnotations', with_bbox=True),
     dict(type='Resize', scale=(1333, 800), keep_ratio=True),
     dict(type='RandomFlip', prob=0.5),
     dict(type='PackDetInputs')
@@ -28,19 +29,21 @@ test_pipeline = [
     dict(type='LoadImageFromFile', backend_args=backend_args),
     dict(type='Resize', scale=(1333, 800), keep_ratio=True),
     # If you don't have a gt annotation, delete the pipeline
-    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(type='LoadAnnotations', with_bbox=True),
     dict(
         type='PackDetInputs',
         meta_keys=('img_id', 'img_path', 'ori_shape', 'img_shape',
                    'scale_factor'))
 ]
 train_dataloader = dict(
-    batch_size=2,
+    batch_size=16,
     num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     batch_sampler=dict(type='AspectRatioBatchSampler'),
     dataset=dict(
+        # metainfo = dict(classes=('Laptop', 'Pager', 'Mobile Phone', 'Walkie-Talkie')),
+        metainfo = dict(classes=('explosive')),
         type=dataset_type,
         data_root=data_root,
         ann_file='annotations/instances_train2017.json',
@@ -49,12 +52,14 @@ train_dataloader = dict(
         pipeline=train_pipeline,
         backend_args=backend_args))
 val_dataloader = dict(
-    batch_size=1,
+    batch_size=16,
     num_workers=2,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
+        # metainfo = dict(classes=('Laptop', 'Pager', 'Mobile Phone', 'Walkie-Talkie')),
+        metainfo = dict(classes=('explosive')),
         type=dataset_type,
         data_root=data_root,
         ann_file='annotations/instances_val2017.json',
@@ -67,7 +72,7 @@ test_dataloader = val_dataloader
 val_evaluator = dict(
     type='CocoMetric',
     ann_file=data_root + 'annotations/instances_val2017.json',
-    metric=['bbox', 'segm'],
+    metric=['bbox'],
     format_only=False,
     backend_args=backend_args)
 test_evaluator = val_evaluator

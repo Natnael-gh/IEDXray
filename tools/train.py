@@ -6,7 +6,7 @@ import os.path as osp
 from mmengine.config import Config, DictAction
 from mmengine.registry import RUNNERS
 from mmengine.runner import Runner
-
+from mmdet.models import detectors
 from mmdet.utils import setup_cache_size_limit_of_dynamo
 
 

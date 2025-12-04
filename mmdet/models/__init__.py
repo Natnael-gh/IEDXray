@@ -16,3 +16,5 @@ from .test_time_augs import *  # noqa: F401,F403
 from .trackers import *  # noqa: F401,F403
 from .tracking_heads import *  # noqa: F401,F403
 from .vis import *  # noqa: F401,F403
+# from .standard_roi_head_supcon import StandardRoIHeadSupCon  
+# __all__.append('StandardRoIHeadSupCon')

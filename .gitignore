@@ -121,3 +121,9 @@ work_dirs/
 *.pth
 *.py~
 *.sh~
+
+
+
+#ignore folders
+work_dirs/
+work_dir/

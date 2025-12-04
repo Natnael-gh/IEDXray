@@ -15,8 +15,9 @@ from .split_batch import split_batch
 from .typing_utils import (ConfigType, InstanceList, MultiConfig,
                            OptConfigType, OptInstanceList, OptMultiConfig,
                            OptPixelList, PixelList, RangeType)
+from .logger import get_root_logger
 
-__all__ = [
+__all__ = ['get_root_logger',
     'collect_env', 'find_latest_checkpoint', 'update_data_root',
     'setup_multi_processes', 'get_caller_name', 'log_img_scale', 'compat_cfg',
     'split_batch', 'register_all_modules', 'replace_cfg_vals', 'AvoidOOM',

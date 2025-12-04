@@ -47,3 +47,10 @@ def log_img_scale(img_scale, shape_order='hw', skip_square=False):
         logger='current')
 
     return True
+import logging
+
+def get_root_logger(log_file=None, log_level=logging.INFO):
+    logger = logging.getLogger()
+    logger.setLevel(log_level)
+    return logger
+
