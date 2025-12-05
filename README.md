@@ -10,3 +10,8 @@ The **IEDXray** dataset is a curated and annotated collection of X-ray images de
 
 We perform benchmarking across multiple model architectures to evaluate performance on the IEDXray dataset. Most experiments were conducted using **MMDetection**, leveraging its modular configuration system and strong baseline detectors. 
 
+### 🔗 **Model Weights**
+
+Fine-tuned model weights used in our experiments can be downloaded here:
+
+➡️ **[Link to Model Weights](https://kuacae-my.sharepoint.com/:f:/g/personal/100058082_ku_ac_ae/EhIRRQSatJlOgRyRIp74ZtoBa3mp2UyXS74NCUqnn_dZ2w?e=KjWetA)**
