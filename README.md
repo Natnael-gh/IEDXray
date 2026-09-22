@@ -14,4 +14,4 @@ We perform benchmarking across multiple model architectures to evaluate performa
 
 Fine-tuned model weights used in our experiments can be downloaded here:
 
-➡️ **[Link to Model Weights](https://kuacae-my.sharepoint.com/:f:/g/personal/100058082_ku_ac_ae/EhIRRQSatJlOgRyRIp74ZtoBa3mp2UyXS74NCUqnn_dZ2w?e=KjWetA)**
+➡️ **https://kuacae-my.sharepoint.com/:f:/g/personal/100058082_ku_ac_ae/IgASEUUEmrSZToEckSKe-GbaARV99ie3kjIhq6Y9UvcEs-Q?e=tdjzgb**
